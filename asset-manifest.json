@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/unkufrontend/static/css/main.f855e6bc.css",
+    "main.js": "/unkufrontend/static/js/main.f558842c.js",
+    "index.html": "/unkufrontend/index.html",
+    "main.f855e6bc.css.map": "/unkufrontend/static/css/main.f855e6bc.css.map",
+    "main.f558842c.js.map": "/unkufrontend/static/js/main.f558842c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f855e6bc.css",
+    "static/js/main.f558842c.js"
+  ]
+}
