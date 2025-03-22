@@ -28,16 +28,23 @@ const Home = () => {
     return <p>Cargando...</p>;
   }
 
-  // Muestra un mensaje de error si algo sale mal
   if (error) {
-    return <p>Error: {error}</p>;
+    return (
+      <div>
+        <p>Error: {error}</p>
+        <button onClick={() => window.location.reload()}>Reintentar</button>
+      </div>
+    );
   }
 
-  // Muestra los datos obtenidos de la API
   return (
     <div>
       <h1>Datos de la API</h1>
-      <pre>{home.message}</pre>
+      <ul>
+        {home.map((item, index) => (
+          <li key={index}>{item.name}</li> 
+        ))}
+      </ul>
     </div>
   );
 };
