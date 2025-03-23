@@ -18,10 +18,10 @@ export const getHome = async () => {
   } catch (error) {
     // Manejo explícito para problemas de conexión
     if (error.message.includes("Network Error") || error.code === "ERR_NETWORK") {
-      throw new Error("No se pudo conectar con el servidor. Intente nuevamente más tarde.");
+      throw handleServiceError(error, "No se pudo conectar con el servidor. Intente nuevamente más tarde.");
     }
     // Mensaje genérico para otros errores
-    throw new Error("Ocurrió un problema inesperado. Intente nuevamente.");
+    throw handleServiceError(error, "Ocurrió un problema inesperado. Intente nuevamente.");
   }
 };
 

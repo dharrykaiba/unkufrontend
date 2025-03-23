@@ -3,9 +3,12 @@ import React, { useState, useEffect } from "react";
 import { getHome } from "../api/services/homeService.js";
 
 const Home = () => {
-  const [home, setHome] = useState([]); // Estado para almacenar los datos de la API
+  const [home, setHome] = useState({}); // Estado para almacenar los datos de la API
   const [loading, setLoading] = useState(true); // Estado para manejar el loading
   const [error, setError] = useState(null); // Estado para manejar errores
+
+  const REPO_URL = process.env.REACT_APP_REPO; // Define tu variable de entorno
+  
 
   // Llama a la función getHome cuando el componente se monte
   useEffect(() => {
@@ -39,13 +42,10 @@ const Home = () => {
 
   return (
     <div>
-      <h1>Datos de la API</h1>
-      <ul>
-        {home.map((item, index) => (
-          <li key={index}>{item.name}</li> 
-        ))}
-      </ul>
-    </div>
+    <h1>Datos de la API</h1>
+    <p>{home.message || "No hay mensaje disponible"}</p>
+    <p>Header change ss{REPO_URL}</p>
+  </div>
   );
 };
 
