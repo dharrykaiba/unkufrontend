@@ -44,7 +44,6 @@ const Home = () => {
     <div>
     <h1>Datos de la API</h1>
     <p>{home.message || "No hay mensaje disponible"}</p>
-    <p>Header change ss{REPO_URL}</p>
   </div>
   );
 };
