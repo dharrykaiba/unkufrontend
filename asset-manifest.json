@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/unkufrontend/static/js/main.2e46f57b.js",
+    "main.js": "/unkufrontend/static/js/main.e8b4bc6b.js",
     "index.html": "/unkufrontend/index.html",
-    "main.2e46f57b.js.map": "/unkufrontend/static/js/main.2e46f57b.js.map"
+    "main.e8b4bc6b.js.map": "/unkufrontend/static/js/main.e8b4bc6b.js.map"
   },
   "entrypoints": [
-    "static/js/main.2e46f57b.js"
+    "static/js/main.e8b4bc6b.js"
   ]
 }
