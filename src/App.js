@@ -32,7 +32,7 @@ function About() {
 
 function App() {
   return (
-    <Router basename="/">
+    <Router basename="/unkufrontend">
       <nav>
         <ul>
           <li><Link to="/">Inicio</Link></li>
