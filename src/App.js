@@ -20,7 +20,7 @@ function App() {
 export default App;
 */
 // App.js
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { HashRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 function Home() {
   return <h1>Inicio</h1>;
@@ -32,7 +32,7 @@ function About() {
 
 function App() {
   return (
-    <Router basename="/unkufrontend">
+    <Router>
       <nav>
         <ul>
           <li><Link to="/">Inicio</Link></li>
