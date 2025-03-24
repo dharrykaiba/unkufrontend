@@ -20,14 +20,29 @@ function App() {
 export default App;
 */
 // App.js
-import { HashRouter as Router, Routes, Route, Link } from "react-router-dom";
+import {
+  HashRouter as Router,
+  Routes,
+  Route,
+  Link,
+  useLocation,
+} from "react-router-dom";
 
 function Home() {
   return <h1>Inicio</h1>;
 }
 
 function About() {
-  return <h1>Acerca de</h1>;
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const variable = queryParams.get("variable") || "No definida";
+
+  return (
+    <div>
+      <h1>Acerca de</h1>
+      <p>Variable desde la URL: {variable}</p>
+    </div>
+  );
 }
 
 function App() {
@@ -35,8 +50,12 @@ function App() {
     <Router>
       <nav>
         <ul>
-          <li><Link to="/">Inicio</Link></li>
-          <li><Link to="/about">Acerca de</Link></li>
+          <li>
+            <Link to="/">Inicio</Link>
+          </li>
+          <li>
+            <Link to="/about">Acerca de</Link>
+          </li>
         </ul>
       </nav>
       <Routes>
