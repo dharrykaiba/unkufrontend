@@ -7,10 +7,7 @@ const Home = () => {
   const [loading, setLoading] = useState(true); // Estado para manejar el loading
   const [error, setError] = useState(null); // Estado para manejar errores
 
-  const REPO_URL = process.env.REACT_APP_REPO; // Define tu variable de entorno
-  
-
-  // Llama a la función getHome cuando el componente se monte
+    // Llama a la función getHome cuando el componente se monte
   useEffect(() => {
     const fetchData = async () => {
       try {
