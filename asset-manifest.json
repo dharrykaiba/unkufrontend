@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.js": "./static/js/main.9ce8c418.js",
-    "index.html": "./index.html",
-    "main.9ce8c418.js.map": "./static/js/main.9ce8c418.js.map"
+    "main.js": "/unkufrontend/static/js/main.9ce8c418.js",
+    "index.html": "/unkufrontend/index.html",
+    "main.9ce8c418.js.map": "/unkufrontend/static/js/main.9ce8c418.js.map"
   },
   "entrypoints": [
     "static/js/main.9ce8c418.js"
