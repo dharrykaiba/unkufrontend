@@ -10,13 +10,16 @@ const handleServiceError = (error, message) => {
 
 // Función para obtener la lista de usuarios
 export const getAlltest = async () => {
-    try {
-      const response = await axios.get(`${API_URL}/user`);
-      console.log("Respuesta del backend:", response.data); // 👀 Verifica la respuesta
-      return response.data.content; // 🔥 Accede a "content"
-    } catch (error) {
-      console.error("Error en la petición:", error);
-      throw handleServiceError(error, "Ocurrió un problema inesperado al obtener los usuarios.");
-    }
-  };
-  
+  try {
+    console.log("Consultando:", `${API_URL}/user`);
+    const response = await axios.get(`${API_URL}/user`);
+    console.log("Respuesta del backend:", response.data);
+    return response.data.content;
+  } catch (error) {
+    console.error(
+      "Error en la petición:",
+      error.response?.data || error.message
+    );
+    throw new Error("Error al obtener los usuarios.");
+  }
+};

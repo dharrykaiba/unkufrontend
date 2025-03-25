@@ -34,7 +34,7 @@ const Alltest = () => {
           ))}
         </ul>
       ) : (
-        <p>No hay productos disponibles en este momento.</p>
+        <p>No hay usuarios disponibles en este momento.</p>
       )}
     </div>
   );
