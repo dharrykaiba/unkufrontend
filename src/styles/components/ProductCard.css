@@ -1,0 +1,97 @@
+/* src/styles/components/ProductCard.css */
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Asegura que las tarjetas se ajusten al espacio disponible */
+    gap: var(--space-md); /* Espacio entre las tarjetas */
+    padding: var(--space-md);
+    box-sizing: border-box;
+    margin-top: 20px; /* Espacio superior para separar de los filtros */
+}
+
+.product-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: var(--space-sm);
+    border: 1px solid var(--color-border); /* Borde visible */
+    border-radius: var(--radius-card);
+    color: var(--color-text);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    font-family: var(--font-primary);
+    width: 100%; /* Asegura que las tarjetas ocupen todo el ancho del contenedor */
+    max-width: none; /* Elimina el límite máximo de ancho */
+    box-sizing: border-box; /* Asegura que el padding no sobrepase el tamaño */
+}
+
+.product-card:hover {
+    transform: var(--transform-hover);
+    border-color: var(--color-hover);
+}
+
+.product-card img {
+    width: 100%; /* Asegura que la imagen ocupe todo el ancho de la tarjeta */
+    height: auto; /* Mantiene la proporción de la imagen */
+    border-radius: var(--radius-card) var(--radius-card) 0 0; /* Redondea la parte superior de la imagen */
+}
+
+.product-info {
+    padding: var(--space-xs);
+    text-align: left;
+}
+
+.product-info h3 {
+    margin: 0;
+    font-size: var(--font-size-md); /* Ajusta el tamaño del nombre */
+    color: var(--color-primary);
+    white-space: nowrap; /* Evita que el texto se desborde */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Muestra puntos suspensivos si el texto es largo */
+}
+
+.product-price {
+    margin-top: var(--space-xs);
+    font-size: var(--font-size-md);
+    font-weight: bold;
+    color: var(--color-primary);
+}
+
+.product-price strong {
+    font-size: 1.1em;
+    color: var(--color-text);
+}
+
+.product-card p {
+    margin: var(--space-xs) 0;
+    font-size: var(--font-size-md);
+    color: var(--color-text);
+}
+
+.product-card p strong {
+    color: var(--color-text);
+}
+
+.product-name {
+    font-size: var(--font-size-md); /* Ajustar tamaño a mediano */
+    margin-bottom: var(--space-xs); /* Aumenta el espacio entre el nombre y la descripción */
+}
+
+/* Estilo para la descripción */
+.product-description {
+    color: var(--color-text-light); /* Color para la descripción */
+    font-size: var(--font-size-lg); /* Aumenta el tamaño de la descripción */
+    margin-top: var(--space-xs);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@media (max-width: 600px) {
+    .product-list {
+        grid-template-columns: 1fr; /* En pantallas pequeñas, coloca las tarjetas en una sola columna */
+        padding: var(--space-xs);
+    }
+
+    .product-card {
+        padding: var(--space-xs);
+    }
+}

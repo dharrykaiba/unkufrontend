@@ -1,0 +1,87 @@
+/* src/styles/CartSidebar.css */
+.cart-sidebar {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 300px;
+  height: 100%;
+  background: var(--color-sidebar-bg);
+  box-shadow: 2px 0 5px var(--color-sidebar-shadow);
+  overflow-y: auto;
+  transition: right var(--transition-duration) var(--transition-ease);
+  padding: var(--space-sm);
+  z-index: 1000;
+  font-family: var(--font-primary); /* Consistencia en la fuente */
+  border-radius: var(--radius-sidebar); /* Esquinas redondeadas */
+}
+
+.cart-sidebar.open {
+  right: 0;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  margin: var(--space-sm) 0;
+  font-size: var(--font-size-sm); /* Tamaño de fuente pequeño */
+  color: var(--color-text); /* Color del texto */
+}
+
+li strong {
+  font-size: var(--font-size-md); /* Texto mediano para elementos destacados */
+}
+
+.cart-sidebar .cart-item {
+  display: flex;
+  justify-content: space-between;
+  margin: var(--space-sm) 0;
+}
+
+.cart-sidebar .cart-item .item-name {
+  font-size: var(--font-size-md); /* Tamaño mediano para nombre de ítem */
+}
+
+.cart-sidebar .cart-item .item-price {
+  font-size: var(--font-size-sm); /* Tamaño pequeño para precio */
+  color: var(--color-primary); /* Color llamativo para precio */
+}
+
+.cart-sidebar .cart-item .item-quantity {
+  font-size: var(--font-size-sm); /* Tamaño pequeño para cantidad */
+}
+
+/* Estilo para el botón de "Cerrar" */
+.cart-sidebar .close-btn {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  font-size: var(--font-size-lg); /* Tamaño grande para el ícono de cerrar */
+  cursor: pointer;
+  transition: transform var(--transition-duration) var(--transition-ease);
+}
+
+.cart-sidebar .close-btn:hover {
+  transform: var(--transform-hover); /* Efecto hover */
+}
+
+/* Estilo para el botón de "Vaciar carrito" */
+.cart-sidebar .clear-cart-btn {
+  margin-top: var(--space-md);
+  padding: var(--space-sm) var(--space-md);
+  background: var(--color-primary);
+  color: var(--color-text-light);
+  border: none;
+  border-radius: var(--radius-card);
+  cursor: pointer;
+  font-size: var(--font-size-md);
+  transition: background-color var(--transition-duration) var(--transition-ease);
+}
+
+.cart-sidebar .clear-cart-btn:hover {
+  background-color: var(--color-hover); /* Hover más oscuro */
+}

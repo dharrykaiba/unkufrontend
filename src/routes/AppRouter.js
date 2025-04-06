@@ -1,34 +1,36 @@
-// src/routes/AppRouter.js
 import React from "react";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 import Home from "../pages/Home";
-import Test from "../pages/Test";
+import ProductDetail from "../pages/ProductDetail"; // Página de detalle del producto
+import About from "../pages/About";
+import Profile from "../pages/Profile";
+import ProfileEdit from "../pages/ProfileEdit";
+import ChangePassword from "../pages/ChangePassword";
+import UpdateData from "../pages/UpdateData.js";
+import NotFound from "../pages/NotFound";
+import Search from "../pages/Search.js";
+import ProtectedRoute from "./ProtectedRoute";
 
-function About() {
-  const location = useLocation();
-  const queryParams = new URLSearchParams(location.search);
-  const variable = queryParams.get("variable") || "No definida";
-
-  return (
-    <div>
-      <h1>Acerca de</h1>
-      <p>Variable desde la URL: {variable}</p>
-    </div>
-  );
-}
-
-const NotFound = () => <h2>404 - Página no encontrada</h2>;
 
 const AppRouter = () => {
   return (
     <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/test" element={<Test />} />
-        <Route path="*" element={<NotFound />} />  {/* Maneja rutas incorrectas */}
-      </Routes>
-
+      <Route path="/" element={<Home />} />
+      <Route path="/product/:prdId" element={<ProductDetail />} />{" "}
+      {/* Ruta dinámica */}
+      <Route path="/search" element={<Search />} />
+      <Route path="/about" element={<About />} />
+      {/* Rutas protegidas */}
+      <Route element={<ProtectedRoute />}>
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/profile/edit" element={<ProfileEdit />} />
+        <Route path="/change-password" element={<ChangePassword />} />
+        <Route path="/update-data" element={<UpdateData />} />
+      </Route>
+      {/* Ruta para la página de error 404 */}
+      <Route path="*" element={<NotFound />} />
+    </Routes>
   );
 };
 

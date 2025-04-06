@@ -1,0 +1,223 @@
+/* src/styles/pages/Search.css */
+.search-page {
+  display: flex;
+  gap: var(--space-sm);
+  align-items: flex-start;
+  width: 100%;
+}
+
+/* Contenedor del input y el botón */
+.search-input-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 500px;
+  margin-bottom: var(--space-md);
+}
+
+.search-input-container input {
+  flex: 1;
+  padding: var(--space-sm) var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card) 0 0 var(--radius-card);
+  font-size: var(--font-size-md);
+  height: 12px;
+}
+
+.search-input-container button {
+  padding: var(--space-sm) var(--space-md);
+  background-color: var(--color-primary);
+  color: var(--color-text-light);
+  border: none;
+  border-radius: 0 var(--radius-card) var(--radius-card) 0;
+  font-size: var(--font-size-md);
+  cursor: pointer;
+  height: 30px;
+  transition: background-color var(--transition-duration) var(--transition-ease);
+}
+
+.search-input-container button:hover {
+  background-color: var(--color-hover);
+}
+
+.filters {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  background: var(--color-background);
+  border-radius: var(--radius-card);
+  box-shadow: 0 0px 0px var(--color-shadow);
+  padding: var(--space-md);
+  width: 200px;
+  max-width: 100%;
+}
+
+/* Campo de búsqueda por nombre */
+.filters input[type="text"] {
+  width: 100%;
+  padding: var(--space-sm) var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  font-size: var(--font-size-md);
+  transition: border-color var(--transition-duration) var(--transition-ease);
+}
+
+.filters input[type="text"]:focus {
+  border-color: var(--color-primary);
+  outline: none;
+}
+
+/* Botón de búsqueda por nombre */
+.filters button {
+  padding: var(--space-sm) var(--space-md);
+  background-color: var(--color-primary);
+  color: var(--color-text-light);
+  border: none;
+  border-radius: var(--radius-card);
+  font-size: var(--font-size-md);
+  cursor: pointer;
+  transition: background-color var(--transition-duration) var(--transition-ease);
+}
+
+.filters button:hover {
+  background-color: var(--color-hover);
+}
+
+/* Etiqueta de búsqueda */
+.search-tag {
+  display: flex;
+  align-items: center;
+  background-color: var(--color-secondary);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-card);
+  margin-bottom: var(--space-sm);
+}
+
+.search-tag span {
+  font-size: var(--font-size-md);
+}
+
+/* Botón para limpiar la búsqueda */
+.clear-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: var(--space-xs);
+  color: var(--color-primary);
+  font-weight: bold;
+  transition: color var(--transition-duration) var(--transition-ease);
+}
+
+.clear-button:hover {
+  color: var(--color-hover);
+}
+
+/* Grupo de filtros */
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+/* Checkboxes personalizados */
+.filter-group input[type="checkbox"] {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--color-primary);
+  border-radius: var(--radius-card);
+  cursor: pointer;
+  margin-right: var(--space-xs);
+  position: relative;
+  transition: all var(--transition-duration) var(--transition-ease);
+}
+
+.filter-group input[type="checkbox"]:checked {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.filter-group input[type="checkbox"]:checked::after {
+  content: "✔";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--color-text-light);
+  font-size: var(--font-size-sm);
+}
+
+.filter-group input[type="checkbox"]:hover {
+  border-color: var(--color-hover);
+}
+
+.filter-group input[type="checkbox"]:checked:hover {
+  background-color: var(--color-hover);
+  border-color: var(--color-hover);
+}
+
+.filter-group label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: var(--font-size-md);
+  cursor: pointer;
+  transition: color var(--transition-duration) var(--transition-ease);
+}
+
+.filter-group label:hover {
+  color: var(--color-primary);
+}
+
+/* Lista de productos */
+.product-list {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: var(--space-md);
+}
+
+/* Mensaje de error */
+.error-message {
+  color: var(--color-primary);
+  font-size: var(--font-size-md);
+  margin: var(--space-sm) 0;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+  .search-page {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
+  }
+  .search-input-container {
+    max-width: 100%;
+  }
+
+  .search-input-container input {
+    font-size: var(--font-size-sm);
+  }
+
+  .search-input-container button {
+    font-size: var(--font-size-sm);
+  }
+
+  .filters {
+    width: 100%;
+    max-width: 330px;
+    padding: var(--space-sm);
+  }
+
+  .filter-group {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: var(--space-xs);
+    width: 100%;
+    justify-content: center;
+  }
+
+  .filter-group + .filter-group {
+    margin-top: var(--space-sm);
+  }
+}

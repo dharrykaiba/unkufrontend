@@ -1,0 +1,7 @@
+.loader-wrapper {
+    display: flex;
+    flex-direction: column; /* Permite que su contenido crezca verticalmente */
+    flex: 1; /* Permite que ocupe todo el espacio disponible */
+    width: 100%; /* Asegura que ocupe todo el ancho del contenedor */
+    box-sizing: border-box; /* Incluye el padding en el cálculo del ancho */
+  }

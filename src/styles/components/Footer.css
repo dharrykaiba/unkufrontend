@@ -1,0 +1,62 @@
+/* src/styles/Footer.css */
+.footer {
+    background-color: var(--color-primary); /* Fondo con color primario */
+    color: var(--color-text-light); /* Texto claro */
+    padding: var(--space-lg) var(--space-md); /* Espaciado grande */
+    border-top: 1px solid var(--color-border); /* Borde superior */
+    box-shadow: 0 -2px 4px var(--color-shadow); /* Sombra ligera */
+    text-align: center; /* Centrar el contenido */
+  }
+  
+  .footer-content {
+    max-width: 1200px; /* Ancho máximo del contenido */
+    margin: 0 auto; /* Centrar el contenido */
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md); /* Espacio entre elementos */
+  }
+  
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-lg); /* Espacio entre enlaces */
+    flex-wrap: wrap; /* Ajustar en pantallas pequeñas */
+  }
+  
+  .footer-links a {
+    color: var(--color-text-light); /* Texto claro */
+    text-decoration: none; /* Eliminar subrayado */
+    transition: color var(--transition-duration) var(--transition-ease); /* Transición suave */
+  }
+  
+  .footer-links a:hover {
+    color: var(--color-hover); /* Cambiar color al hacer hover */
+  }
+  
+  .footer-social {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-lg); /* Espacio entre íconos */
+  }
+  
+  .footer-social a {
+    color: var(--color-text-light); /* Texto claro */
+    font-size: var(--font-size-lg); /* Tamaño de fuente grande */
+    transition: color var(--transition-duration) var(--transition-ease); /* Transición suave */
+  }
+  
+  .footer-social a:hover {
+    color: var(--color-hover); /* Cambiar color al hacer hover */
+  }
+  
+  /* Estilos responsivos */
+  @media (max-width: 768px) {
+    .footer-links {
+      flex-direction: column; /* Apilar enlaces en pantallas pequeñas */
+      gap: var(--space-sm); /* Espacio pequeño entre enlaces */
+    }
+  
+    .footer-social {
+      gap: var(--space-md); /* Espacio mediano entre íconos */
+    }
+  }

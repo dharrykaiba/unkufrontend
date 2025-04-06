@@ -1,0 +1,118 @@
+/* src/styles/Navbar.css */
+
+/* Estilos básicos para la barra de navegación */
+nav {
+  display: flex;
+  justify-content: space-between; /* Espacio entre logo y elementos de la derecha */
+  align-items: center;
+  background-color: var(--color-primary); /* Usar color primario */
+  padding: var(--space-sm) var(--space-lg); /* Espaciado pequeño y grande */
+  box-shadow: 0 4px 6px var(--color-shadow); /* Sombra ligera */
+  position: relative;
+  z-index: 1000; /* Asegurar que el Navbar esté por encima de otros elementos */
+}
+
+/* Contenedor del logo */
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm); /* Espacio pequeño entre elementos */
+  margin-right: auto; /* Asegura que el logo se alinee a la izquierda */
+}
+
+/* Logo */
+.navbar-logo {
+  height: 24px; /* Tamaño del logo */
+  width: auto;
+  transition: transform var(--transition-duration) var(--transition-ease); /* Transición suave */
+}
+
+.navbar-logo:hover {
+  transform: var(--transform-hover); /* Efecto hover */
+}
+
+/* Enlace del logo */
+.navbar-logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none; /* Eliminar subrayado */
+  color: inherit; /* Heredar color del texto */
+}
+
+/* Contenedor de elementos de la derecha (carrito y usuario) */
+header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md); /* Espacio mediano entre elementos */
+}
+
+/* Botones de íconos (carrito y usuario) */
+.icon-button {
+  background: none;
+  border: none;
+  color: var(--color-text-light); /* Texto claro */
+  font-size: var(--font-size-icon); /* Tamaño de fuente para íconos */
+  cursor: pointer;
+  transition: all var(--transition-duration) var(--transition-ease); /* Transición suave */
+}
+
+.icon-button:hover {
+  color: var(--color-hover); /* Cambiar color al hacer hover */
+  transform: var(--transform-hover); /* Efecto hover */
+}
+
+.icon-button:focus {
+  outline: none; /* Eliminar contorno al enfocar */
+}
+
+.icon-button:active {
+  transform: var(--transform-active); /* Efecto al hacer clic */
+}
+
+/* Estilos para el campo de búsqueda */
+.search-container {
+  display: flex;
+  align-items: center;
+  margin-right: auto; /* Alinear a la izquierda */
+  margin-left: var(--space-lg); /* Espacio grande entre el logo y el buscador */
+  max-width: 400px; /* Ancho máximo */
+  width: 100%;
+}
+
+.search-input {
+  padding: var(--space-xs) var(--space-sm); /* Espaciado extra pequeño y pequeño */
+  border: 1px solid var(--color-border); /* Borde suave */
+  border-radius: var(--radius-card); /* Bordes redondeados */
+  font-size: var(--font-size-md); /* Tamaño de fuente mediano */
+  width: 100%;
+  transition: border-color var(--transition-duration) var(--transition-ease); /* Transición suave */
+}
+
+.search-input:focus {
+  border-color: var(--color-hover); /* Cambiar color al enfocar */
+  outline: none; /* Eliminar contorno al enfocar */
+}
+
+.search-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: var(--space-sm); /* Espacio pequeño */
+  color: var(--color-text-light); /* Texto claro */
+  transition: color var(--transition-duration) var(--transition-ease); /* Transición suave */
+}
+
+.search-button:hover {
+  color: var(--color-hover); /* Cambiar color al hacer hover */
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+  .search-container {
+    display: none; /* Ocultar campo de búsqueda en pantallas pequeñas */
+  }
+
+  .logo-container {
+    margin-right: 0; /* Ajustar margen en pantallas pequeñas */
+  }
+}

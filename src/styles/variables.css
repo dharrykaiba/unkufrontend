@@ -1,0 +1,53 @@
+/* src/styles/variables.css */
+:root {
+  /* Colores principales */
+  --color-primary: #E63946; /* Rojo vibrante para detalles llamativos */
+  --color-secondary: #F1FAEE; /* Blanco suave o gris claro */
+  --color-background: #FFFFFF; /* Fondo principal blanco */
+  --color-text: #333333; /* Texto principal negro/gris oscuro */
+  --color-border: #E0E0E0; /* Bordes suaves y neutros */
+  --color-hover: #D62828; /* Un rojo ligeramente más oscuro para hover */
+  --color-shadow: rgba(0, 0, 0, 0.1); /* Sombra ligera para profundidad */
+  --color-sidebar-bg: #FFFFFF; /* Fondo del sidebar blanco */
+  --color-sidebar-shadow: rgba(0, 0, 0, 0.2); /* Sombra más ligera del sidebar */
+  --color-text-light: #ffffff; /* Para textos claros */
+
+  /* Fuentes */
+  --font-primary: 'Roboto', 'Arial', sans-serif; /* Fuente moderna y elegante */
+  --font-code: 'Courier New', Courier, monospace; /* Fuente opcional para elementos especiales */
+
+  /* Espaciados */
+  --space-xs: 4px; /* Espaciado extra pequeño */
+  --space-sm: 8px; /* Espaciado pequeño */
+  --space-md: 16px; /* Espaciado mediano */
+  --space-lg: 32px; /* Espaciado grande */
+
+  /* Tamaños de fuente */
+  --font-size-sm: 10px; /* Texto pequeño */
+  --font-size-md: 12px; /* Texto mediano */
+  --font-size-lg: 14px; /* Texto grande */
+  --font-size-xl: 16px; /* Texto extra grande */
+  --font-size-icon: 18px; /* Tamaño para íconos o botones pequeños */
+
+   /* Transformaciones */
+   --transform-active: scale(0.95); /* Efecto al hacer clic */
+   --transform-hover: scale(1.01); /* Transformación al hacer hover */
+    /* Duración y tipo de transiciones */
+  --transition-duration: 0.3s; /* Duración estándar de transiciones */
+  --transition-ease: ease; /* Curva de transición estándar */
+
+    /* Esquinas redondeadas */
+  --radius-card: 8px; /* Redondeo estándar para tarjetas */
+   /* Esquinas redondeadas */
+   --radius-sidebar: 12px; /* Redondeo para el sidebar */
+
+  /* Sombra para hover */
+  --color-shadow-hover: rgba(0, 0, 0, 0.2); /* Sombra más fuerte en hover */
+}
+
+/* Ajustar tamaños para inputs */
+.login-popup input {
+  width: 100%;
+  padding: var(--space-xs) var(--space-sm);
+  font-size: var(--font-size-sm); /* Texto más pequeño */
+}

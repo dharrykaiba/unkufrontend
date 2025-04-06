@@ -1,0 +1,26 @@
+/* src/styles/global.css */
+@import './variables.css'; /* Importa las variables definidas en el archivo variables.css */
+
+body {
+  margin: 0;
+  font-family: var(--font-primary); /* Usa la fuente principal */
+  background-color: var(--color-background); /* Color de fondo */
+  color: var(--color-text); /* Color de texto principal */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: var(--font-code); /* Fuente para el código */
+}
+
+/* Eliminar subrayado de todos los enlaces */
+a {
+  text-decoration: none; /* Elimina el subrayado de los enlaces */
+  color: inherit; /* Hereda el color del texto para los enlaces */
+}
+
+a:hover {
+  text-decoration: none; /* Añade subrayado solo al hacer hover */
+}
+

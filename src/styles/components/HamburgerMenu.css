@@ -1,0 +1,84 @@
+/* src/styles/components/HamburgerMenu.css */
+
+.hamburger-menu {
+  position: relative;
+  display: inline-block;
+}
+
+.hamburger-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 24px;
+  cursor: pointer;
+  z-index: 10;
+  transition: transform 0.3s ease;
+}
+
+.hamburger-icon .bar {
+  width: 100%;
+  height: 3px; /* Hacer las barras un poco más delgadas */
+  background-color: var(--color-text-light);
+  border-radius: 2px;
+  transition: all 0.3s ease; /* Animación suave para todas las propiedades */
+}
+
+/* Animación al abrir el menú */
+.hamburger-icon.open .bar:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px); /* Ajustar la posición */
+}
+
+.hamburger-icon.open .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-icon.open .bar:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px); /* Ajustar la posición */
+}
+
+/* Efecto hover en el ícono */
+.hamburger-icon:hover .bar {
+  background-color: var(--color-hover); /* Cambiar color al pasar el mouse */
+}
+
+.menu-options {
+  position: absolute;
+  top: 15px; /* Más espacio entre el ícono y el menú */
+  left: 0;
+  background-color: var(--color-sidebar-bg);
+  box-shadow: 0 4px 8px var(--color-sidebar-shadow);
+  border-radius: var(--radius-card);
+  padding: var(--space-md);
+  display: none;
+  flex-direction: column;
+  z-index: 9;
+  width: 200px;
+  opacity: 0; /* Inicialmente invisible */
+  transform: translateY(-10px); /* Desplazamiento inicial */
+  transition: opacity 0.3s ease, transform 0.3s ease; /* Animación suave */
+}
+
+.menu-options.visible {
+  display: flex;
+  opacity: 1; /* Hacer visible */
+  transform: translateY(0); /* Sin desplazamiento */
+}
+
+.menu-options a {
+  padding: var(--space-sm);
+  color: var(--color-text);
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease; /* Animación suave */
+}
+
+.menu-options a:hover {
+  background-color: var(--color-hover);
+  color: var(--color-text-light);
+  border-radius: 4px; /* Bordes redondeados al hacer hover */
+}
+
+/* Estilos para el campo de búsqueda (oculto) */
+.search-form {
+  display: none;
+}

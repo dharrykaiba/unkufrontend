@@ -1,0 +1,33 @@
+.price-range-selector {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #f8f9fa;
+    max-width: 300px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .price-range-selector h3 {
+    margin: 0 0 10px 0;
+    font-size: 18px;
+    color: #333;
+  }
+  
+  .range-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .range-option {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .range-option input[type="radio"] {
+    margin-right: 10px;
+    accent-color: #007bff;
+  }
+  
