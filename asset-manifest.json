@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/unkufrontend/static/css/main.d986be30.css",
-    "main.js": "/unkufrontend/static/js/main.66f65675.js",
+    "main.css": "/unkufrontend/static/css/main.e81a8bad.css",
+    "main.js": "/unkufrontend/static/js/main.b74e8554.js",
     "index.html": "/unkufrontend/index.html",
-    "main.d986be30.css.map": "/unkufrontend/static/css/main.d986be30.css.map",
-    "main.66f65675.js.map": "/unkufrontend/static/js/main.66f65675.js.map"
+    "main.e81a8bad.css.map": "/unkufrontend/static/css/main.e81a8bad.css.map",
+    "main.b74e8554.js.map": "/unkufrontend/static/js/main.b74e8554.js.map"
   },
   "entrypoints": [
-    "static/css/main.d986be30.css",
-    "static/js/main.66f65675.js"
+    "static/css/main.e81a8bad.css",
+    "static/js/main.b74e8554.js"
   ]
 }
