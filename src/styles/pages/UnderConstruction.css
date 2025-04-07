@@ -12,7 +12,7 @@
   }
   
   .under-construction-logo {
-    width: 120px;
+    width: 600px;
     margin-bottom: var(--space-md);
     transition: transform var(--transition-duration) var(--transition-ease);
   }
