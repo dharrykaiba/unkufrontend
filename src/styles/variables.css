@@ -1,16 +1,30 @@
 /* src/styles/variables.css */
 :root {
+
+  /* Colores principales (monocromáticos) */
+  --color-primary: #444444; /* Gris medio oscuro para acentos */
+  --color-secondary: #F5F5F5; /* Gris claro para fondos suaves */
+  --color-background: #FFFFFF; /* Fondo blanco */
+  --color-text: #222222; /* Texto principal, casi negro */
+  --color-border: #CCCCCC; /* Bordes grises suaves */
+  --color-hover: #333333; /* Gris más oscuro para efectos hover */
+  --color-shadow: rgba(0, 0, 0, 0.05); /* Sombra muy suave */
+  --color-sidebar-bg: #FAFAFA; /* Sidebar en gris muy claro */
+  --color-sidebar-shadow: rgba(0, 0, 0, 0.1); /* Sombra sutil para sidebar */
+  --color-text-light: #ffffff; /* Para textos en fondos oscuros */
+
+  
   /* Colores principales */
-  --color-primary: #E63946; /* Rojo vibrante para detalles llamativos */
-  --color-secondary: #F1FAEE; /* Blanco suave o gris claro */
-  --color-background: #FFFFFF; /* Fondo principal blanco */
-  --color-text: #333333; /* Texto principal negro/gris oscuro */
-  --color-border: #E0E0E0; /* Bordes suaves y neutros */
-  --color-hover: #D62828; /* Un rojo ligeramente más oscuro para hover */
-  --color-shadow: rgba(0, 0, 0, 0.1); /* Sombra ligera para profundidad */
-  --color-sidebar-bg: #FFFFFF; /* Fondo del sidebar blanco */
-  --color-sidebar-shadow: rgba(0, 0, 0, 0.2); /* Sombra más ligera del sidebar */
-  --color-text-light: #ffffff; /* Para textos claros */
+  /*--color-primary: #E63946; /* Rojo vibrante para detalles llamativos */
+  /*--color-secondary: #F1FAEE; /* Blanco suave o gris claro */
+  /*--color-background: #FFFFFF; /* Fondo principal blanco */
+  /*--color-text: #333333; /* Texto principal negro/gris oscuro */
+  /*--color-border: #E0E0E0; /* Bordes suaves y neutros */
+  /*--color-hover: #D62828; /* Un rojo ligeramente más oscuro para hover */
+  /*--color-shadow: rgba(0, 0, 0, 0.1); /* Sombra ligera para profundidad */
+  /*--color-sidebar-bg: #FFFFFF; /* Fondo del sidebar blanco */
+  /*--color-sidebar-shadow: rgba(0, 0, 0, 0.2); /* Sombra más ligera del sidebar */
+  /*--color-text-light: #ffffff; /* Para textos claros */
 
   /* Fuentes */
   --font-primary: 'Roboto', 'Arial', sans-serif; /* Fuente moderna y elegante */

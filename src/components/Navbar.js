@@ -62,18 +62,6 @@ const Navbar = () => {
       )}
       {/* Menú hamburguesa a la derecha */}
       <header>
-        {/* Botón de carrito */}
-        <button
-          onClick={(e) => {
-            e.stopPropagation();
-            toggleCart();
-          }}
-          className="icon-button"
-          aria-label={isCartOpen ? "Cerrar carrito" : "Abrir carrito"}
-        >
-          <FaShoppingCart size={24} />
-        </button>
-
         {/* Botón de login */}
         {!isAuthenticated ? (
           <div style={{ position: "relative", display: "inline-block" }}>
@@ -85,6 +73,17 @@ const Navbar = () => {
         ) : (
           <UserMenu setShowLogin={setShowLogin} />
         )}
+        {/* Botón de carrito */}
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            toggleCart();
+          }}
+          className="icon-button"
+          aria-label={isCartOpen ? "Cerrar carrito" : "Abrir carrito"}
+        >
+          <FaShoppingCart size={24} />
+        </button>
       </header>
       <CartSidebar /> {/* Sidebar del carrito */}
     </nav>

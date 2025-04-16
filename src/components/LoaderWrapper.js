@@ -1,3 +1,4 @@
+// src/components/LoaderWrapper.js
 import React, { useState, useEffect } from "react";
 import "../styles/components/LoaderWrapper.css"; // Para estilos adicionales
 

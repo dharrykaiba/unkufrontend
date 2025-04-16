@@ -6,7 +6,9 @@ import * as authService from "../api/services/authServices"; // Importa el servi
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(authService.isAuthenticated());
+  const [isAuthenticated, setIsAuthenticated] = useState(
+    authService.isAuthenticated()
+  );
   const [isCodeSent, setIsCodeSent] = useState(false);
   const [isWsCodeSent, setIsWsCodeSent] = useState(false); // Nueva variable para seguimiento de código enviado por WhatsApp
 
@@ -45,29 +47,17 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  // Nueva función para solicitar el código de verificación por WhatsApp
-  const requestLoginCodeWS = async (whatsapp) => {
+  
+  // Función para registrar un nuevo usuario
+  const register = async (email, password) => {
     try {
-      const success = await authService.requestLoginCodeWS(whatsapp);
-      if (success) {
-        setIsWsCodeSent(true); // Actualiza el estado de código enviado por WhatsApp
-      }
+      const result = await authService.register(email, password);
+      return result; // { success: true/false, message: "..." }
     } catch (error) {
-      // Maneja el error
-      throw new Error("Error al solicitar el código de WhatsApp");
-    }
-  };
-
-  // Nueva función para verificar el código de verificación por WhatsApp
-  const verifyLoginCodeWS = async (whatsapp, code) => {
-    try {
-      const success = await authService.verifyLoginCodeWS(whatsapp, code);
-      if (success) {
-        setIsAuthenticated(true);
-        setIsWsCodeSent(false); // Reinicia el estado después de la verificación exitosa
-      }
-    } catch (error) {
-      throw new Error("Código incorrecto de WhatsApp");
+      return {
+        success: false,
+        message: error.message || "Error desconocido al registrar",
+      };
     }
   };
 
@@ -96,17 +86,20 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{
-      isAuthenticated,
-      login,
-      isCodeSent,
-      requestLoginCode,
-      verifyLoginCode,
-      isWsCodeSent,
-      requestLoginCodeWS, // Añadido al contexto
-      verifyLoginCodeWS,  // Añadido al contexto
-      logout
-    }}>
+    <AuthContext.Provider
+      value={{
+        isAuthenticated,
+        login,
+        register,
+        isCodeSent,
+        requestLoginCode,
+        verifyLoginCode,
+        isWsCodeSent,
+        //requestLoginCodeWS, // Añadido al contexto
+        //verifyLoginCodeWS,  // Añadido al contexto
+        logout,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );

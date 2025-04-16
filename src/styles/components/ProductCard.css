@@ -8,6 +8,12 @@
     margin-top: 20px; /* Espacio superior para separar de los filtros */
 }
 
+.product-image {
+    width: 100%;
+    border-radius: var(--radius-card) var(--radius-card) 0 0;
+    overflow: hidden; /* Evita que la imagen desborde las esquinas redondeadas */
+}
+
 .product-card {
     display: flex;
     flex-direction: column;
@@ -19,8 +25,10 @@
     transition: transform 0.3s ease, border-color 0.3s ease;
     font-family: var(--font-primary);
     width: 100%; /* Asegura que las tarjetas ocupen todo el ancho del contenedor */
-    max-width: none; /* Elimina el límite máximo de ancho */
+    max-width: 400px;/* Elimina el límite máximo de ancho */
     box-sizing: border-box; /* Asegura que el padding no sobrepase el tamaño */
+    align-items: center; /* Centra horizontalmente los hijos */
+    text-align: center;  /* Centra el texto por defecto */
 }
 
 .product-card:hover {
@@ -32,11 +40,12 @@
     width: 100%; /* Asegura que la imagen ocupe todo el ancho de la tarjeta */
     height: auto; /* Mantiene la proporción de la imagen */
     border-radius: var(--radius-card) var(--radius-card) 0 0; /* Redondea la parte superior de la imagen */
+    display: block; /* 👈 Elimina el espacio extra debajo de la imagen */
 }
 
 .product-info {
     padding: var(--space-xs);
-    text-align: left;
+    text-align: center;
 }
 
 .product-info h3 {
@@ -94,4 +103,10 @@
     .product-card {
         padding: var(--space-xs);
     }
+}
+
+.product-image {
+    width: 100%;
+    border-radius: var(--radius-card) var(--radius-card) 0 0;
+    overflow: hidden; /* Evita que la imagen desborde las esquinas redondeadas */
 }

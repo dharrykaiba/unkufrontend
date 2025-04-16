@@ -1,1 +1,18 @@
 /* src/styles/pages/Search.css */
+/* src/styles/pages/Home.css */
+
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: var(--space-md); /* o algo como 1rem */
+    padding: var(--space-md);
+    justify-items: center; /* 👈 centra el contenido dentro de cada celda */
+  }
+  
+  @media (max-width: 600px) {
+    .product-list {
+      grid-template-columns: 1fr; /* Solo una tarjeta por fila */
+      padding: var(--space-sm);
+    }
+  }
+  

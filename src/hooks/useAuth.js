@@ -6,23 +6,25 @@ const useAuth = () => {
   const {
     isAuthenticated,
     login,
+    register,
     isCodeSent,
     requestLoginCode,
     verifyLoginCode,
     isWsCodeSent,
-    requestLoginCodeWS,
-    verifyLoginCodeWS,
+    //requestLoginCodeWS,
+    //verifyLoginCodeWS,
     logout,
   } = useContext(AuthContext);
   return {
     isAuthenticated,
     login,
+    register,
     isCodeSent,
     requestLoginCode,
     verifyLoginCode,
     isWsCodeSent,
-    requestLoginCodeWS,
-    verifyLoginCodeWS,
+    //requestLoginCodeWS,
+    //verifyLoginCodeWS,
     logout,
   };
 };

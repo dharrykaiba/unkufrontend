@@ -28,20 +28,22 @@ const Home = () => {
 
   return (
     <LoaderWrapper isLoading={isLoading}>
-      {errorMessage ? (
-        <div className="error-message">{errorMessage}</div>
-      ) : (
-        <div className="product-list">
-          {products.length > 0 ? (
-            products.map((product) => (
-              <ProductCard key={product.prdId} product={product} /> // Usamos ProductCard
-            ))
-          ) : (
-            <p>No hay productos disponibles en este momento.</p>
-          )}
-        </div>
-      )}
-    </LoaderWrapper>
+    {errorMessage ? (
+      <div className="error-message">{errorMessage}</div>
+    ) : (
+      <div className="product-list">
+        {isLoading ? ( // Mostrar "Cargando..." mientras se carga
+          <p>Cargando...</p>
+        ) : products.length > 0 ? (
+          products.map((product) => (
+            <ProductCard key={product.prdId} product={product} />
+          ))
+        ) : (
+          <p>No hay productos disponibles en este momento.</p>
+        )}
+      </div>
+    )}
+  </LoaderWrapper>
   );
 };
 

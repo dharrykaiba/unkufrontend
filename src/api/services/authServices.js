@@ -3,6 +3,37 @@ import axios from "axios";
 
 const API_URL = process.env.REACT_APP_API_URL; // Define la URL de tu API
 
+// Función para registrar usuario
+export const register = async (email, password) => {
+  try {
+    const response = await axios.post(`${API_URL}/user/register`, {
+      usrEmail: email,
+      password: password,
+    });
+
+    console.log("Respuesta del registro:", response.data);
+
+    if (response.data.ok) {
+      return {
+        success: true,
+        message: response.data.message,
+      };
+    } else {
+      return {
+        success: false,
+        message: response.data.message || "Error desconocido en el registro",
+      };
+    }
+  } catch (error) {
+    console.error("Error en el registro:", error);
+    return {
+      success: false,
+      message: error.response?.data?.message || "Error en el servidor",
+    };
+  }
+};
+
+
 // Función para solicitar el código de verificación
 export const requestLoginCode = async (email) => {
   try {
