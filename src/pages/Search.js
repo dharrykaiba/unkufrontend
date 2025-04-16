@@ -21,8 +21,17 @@ const Search = () => {
   const [errorMessage, setErrorMessage] = useState(null);
   const location = useLocation(); // Obtener la ubicación actual
 
+  const getSearchParamsFromHash = () => {
+    const hash = window.location.hash; // Ej: "#/search?nombre=polo"
+    const queryStart = hash.indexOf("?");
+    if (queryStart === -1) return new URLSearchParams();
+    return new URLSearchParams(hash.substring(queryStart));
+  };
+
   const loadFiltersFromUrl = () => {
-    const params = new URLSearchParams(window.location.search);
+
+    const params = getSearchParamsFromHash();
+
     const loadedFilters = {
       nombre: params.get("nombre") || "",
       precioMin: params.get("precioMin") || "",
@@ -40,10 +49,13 @@ const Search = () => {
       color: newFilters.color.join(","),
       talla: newFilters.talla.join(","),
     });
+
+    // Cambiar el hash directamente para HashRouter
+    const baseHash = window.location.hash.split("?")[0]; // ej: #/search
     window.history.replaceState(
       null,
       "",
-      `${window.location.pathname}?${params.toString()}`
+      `${baseHash}?${params.toString()}`
     );
   };
 
