@@ -1,9 +1,8 @@
 //src/pages/Search.js
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback  } from "react";
 import { postSearchProduct } from "../api/services/productService";
 import LoaderWrapper from "../components/LoaderWrapper";
 import ProductCard from "../components/ProductCard";
-import { useLocation } from "react-router-dom"; // Importar useLocation
 
 import "../styles/pages/Search.css";
 
@@ -19,7 +18,8 @@ const Search = () => {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
-  const location = useLocation(); // Obtener la ubicación actual
+  
+  const [filtersLoaded, setFiltersLoaded] = useState(false);
 
   const getSearchParamsFromHash = () => {
     const hash = window.location.hash; // Ej: "#/search?nombre=polo"
@@ -28,10 +28,9 @@ const Search = () => {
     return new URLSearchParams(hash.substring(queryStart));
   };
 
-  const loadFiltersFromUrl = () => {
-
+  const loadFiltersFromUrl = useCallback(() => {
     const params = getSearchParamsFromHash();
-
+  
     const loadedFilters = {
       nombre: params.get("nombre") || "",
       precioMin: params.get("precioMin") || "",
@@ -40,33 +39,46 @@ const Search = () => {
       talla: params.get("talla") ? params.get("talla").split(",") : [],
     };
     setFilters(loadedFilters);
-    setTempNombre(loadedFilters.nombre); // Sincronizar tempNombre con el filtro de nombre
-  };
+    setTempNombre(loadedFilters.nombre);
+    setFiltersLoaded(true);
+  }, []);
 
   const updateUrl = (newFilters) => {
-    const params = new URLSearchParams({
-      ...newFilters,
-      color: newFilters.color.join(","),
-      talla: newFilters.talla.join(","),
-    });
+    const params = new URLSearchParams();
 
-    // Cambiar el hash directamente para HashRouter
-    const baseHash = window.location.hash.split("?")[0]; // ej: #/search
-    window.history.replaceState(
-      null,
-      "",
-      `${baseHash}?${params.toString()}`
-    );
+    if (newFilters.nombre) params.set("nombre", newFilters.nombre);
+    if (newFilters.precioMin) params.set("precioMin", newFilters.precioMin);
+    if (newFilters.precioMax) params.set("precioMax", newFilters.precioMax);
+    if (newFilters.color.length > 0)
+      params.set("color", newFilters.color.join(","));
+    if (newFilters.talla.length > 0)
+      params.set("talla", newFilters.talla.join(","));
+
+    const baseHash = window.location.hash.split("?")[0];
+    window.history.replaceState(null, "", `${baseHash}?${params.toString()}`);
   };
 
-  useEffect(() => {
-    loadFiltersFromUrl();
-  }, [location.search]); // Recargar cuando cambie la URL
 
-  const handleSearch = async () => {
+  
+  useEffect(() => {
+    const handleHashChange = () => {
+      loadFiltersFromUrl();
+    };
+
+    window.addEventListener("hashchange", handleHashChange);
+
+    // Cargar por primera vez
+    loadFiltersFromUrl();
+
+    return () => {
+      window.removeEventListener("hashchange", handleHashChange);
+    };
+  }, [loadFiltersFromUrl]); // Recargar cuando cambie la URL
+
+  const handleSearch = useCallback(async () => {
     setIsLoading(true);
     setErrorMessage(null);
-
+  
     const filtersToSend = { ...filters };
     if (filters.color.length === 0) {
       delete filtersToSend.color;
@@ -74,7 +86,7 @@ const Search = () => {
     if (filters.talla.length === 0) {
       delete filtersToSend.talla;
     }
-
+  
     try {
       const searchResults = await postSearchProduct(filtersToSend);
       setProducts(searchResults);
@@ -83,12 +95,14 @@ const Search = () => {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [filters]);
 
   useEffect(() => {
-    handleSearch();
-    updateUrl(filters);
-  }, [filters]);
+    if (filtersLoaded) {
+      handleSearch();
+      updateUrl(filters);
+    }
+  }, [filters, filtersLoaded, handleSearch]);
 
   const handleCheckboxChange = (e, field) => {
     const { value, checked } = e.target;
@@ -213,22 +227,22 @@ const Search = () => {
       </div>
 
       <LoaderWrapper isLoading={isLoading}>
-    {errorMessage ? (
-      <div className="error-message">{errorMessage}</div>
-    ) : (
-      <div className="product-list">
-        {isLoading ? ( // Mostrar "Cargando..." mientras se carga
-          <p>Cargando...</p>
-        ) : products.length > 0 ? (
-          products.map((product) => (
-            <ProductCard key={product.prdId} product={product} />
-          ))
+        {errorMessage ? (
+          <div className="error-message">{errorMessage}</div>
         ) : (
-          <p>No hay productos disponibles en este momento.</p>
+          <div className="product-list">
+            {isLoading ? ( // Mostrar "Cargando..." mientras se carga
+              <p>Cargando...</p>
+            ) : products.length > 0 ? (
+              products.map((product) => (
+                <ProductCard key={product.prdId} product={product} />
+              ))
+            ) : (
+              <p>No hay productos disponibles en este momento.</p>
+            )}
+          </div>
         )}
-      </div>
-    )}
-  </LoaderWrapper>
+      </LoaderWrapper>
     </div>
   );
 };
