@@ -9,7 +9,7 @@ import Footer from "./components/Footer";
 /**/
 import "./App.css"; // Mantener estilos globales
 
-//import UnderConstruction from "./pages/UnderConstruction";
+import UnderConstruction from "./pages/UnderConstruction";
 
 function App() {
   return (
@@ -27,8 +27,7 @@ function App() {
         </Router>
         /* */
       }
-      {/*<UnderConstruction />*/
-      }
+      {<UnderConstruction />}
     </>
   );
 }
