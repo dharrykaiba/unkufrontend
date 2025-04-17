@@ -6,7 +6,7 @@ import LoginForm from "./LoginPopup";
 import UserMenu from "./UserMenu";
 import CartSidebar from "./CartSidebar";
 import { FaUser, FaShoppingCart, FaSearch } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom"; // Importar useLocation
+import { Link } from "react-router-dom"; // Importar useLocation
 import HamburgerMenu from "./HamburgerMenu";
 
 import "../styles/components/Navbar.css"; // Para estilos adicionales
@@ -17,8 +17,7 @@ const Navbar = () => {
   const [showLogin, setShowLogin] = useState(false);
 
   const [searchText, setSearchText] = useState("");
-  const navigate = useNavigate();
-
+  
   const toggleLoginPopup = () => {
     setShowLogin(!showLogin);
   };
@@ -32,6 +31,7 @@ const Navbar = () => {
       } else {
         window.location.hash = `/search`;
       }
+      setSearchText(""); // ✅ Limpia el input después de la búsqueda
     }
   };
 
@@ -68,6 +68,7 @@ const Navbar = () => {
             } else {
               window.location.hash = `/search`;
             }
+            setSearchText(""); // ✅ Limpia el input después de la búsqueda
           }}
         />
       </div>

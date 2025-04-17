@@ -21,7 +21,7 @@ const LoaderWrapper = ({ isLoading, children }) => {
     <div className="loader-wrapper">
       {showLoader ? (
         <div className="loader">
-          <span>Cargando...</span> {/* Puedes usar un spinner aquí */}
+          <span>Cargando, espera por favor ...</span> {/* Puedes usar un spinner aquí */}
         </div>
       ) : (
         children

@@ -1,3 +1,4 @@
+// src/pages/ProductDetail.js
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getProductById } from "../api/services/productService";
@@ -6,7 +7,7 @@ import "../styles/components/ProductDetail.css";
 
 const ProductDetail = () => {
   const { prdId } = useParams();
-  const [product, setProduct] = useState(null);
+  const [product, setProduct] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [selectedColor, setSelectedColor] = useState("");
   const [selectedSize, setSelectedSize] = useState("");
@@ -43,82 +44,105 @@ const ProductDetail = () => {
     // Aquí puedes agregar la lógica para añadir el producto al carrito
   };
 
-  if (!product?.prdId) return <div>Producto no encontrado</div>;
-
-  const { back, front, sleeve } = product.images || {};
+  const { back, front, sleeve } = product?.images || {};
 
   return (
     <LoaderWrapper isLoading={isLoading}>
-      <div className="product-detail-container">
-        <h1>{product?.prdNombre || "Producto no disponible"}</h1>
-        <p>Código: {product?.prdId || "N/A"}</p>
-        <div className="product-images">
-          {front && <img src={front} alt="Frontal" className="product-image" />}
-          {back && <img src={back} alt="Trasero" className="product-image" />}
-          {sleeve && <img src={sleeve} alt="Manga" className="product-image" />}
-        </div>
-        <p className="product-description">{product?.prdDescripcion || "Descripción no disponible"}</p>
-        <div className="product-options">
-          <h2>Selecciona tus opciones:</h2>
-          {/* Selector de color */}
-          <div className="option-selector">
-            <label>Color:</label>
-            <select value={selectedColor} onChange={(e) => setSelectedColor(e.target.value)}>
-              <option value="">Selecciona un color</option>
-              {product?.ProductoStocks?.map((stock, index) => (
-                <option key={index} value={stock.psColor}>
-                  {stock.psColor}
-                </option>
-              ))}
-            </select>
+      {isLoading ? (
+        <p>Cargando...</p> // Solo si quieres texto además del loader
+      ) : !product?.prdId ? (
+        <div>Producto no encontrado</div>
+      ) : (
+        <div className="product-detail-container">
+          <h1>{product?.prdNombre || "Producto no disponible"}</h1>
+          <p>Código: {product?.prdId || "N/A"}</p>
+          <div className="product-images">
+            {front && (
+              <img src={front} alt="Frontal" className="product-image" />
+            )}
+            {back && <img src={back} alt="Trasero" className="product-image" />}
+            {sleeve && (
+              <img src={sleeve} alt="Manga" className="product-image" />
+            )}
           </div>
-          {/* Selector de talla */}
-          <div className="option-selector">
-            <label>Talla:</label>
-            <select value={selectedSize} onChange={(e) => setSelectedSize(e.target.value)}>
-              <option value="">Selecciona una talla</option>
-              {product?.ProductoStocks?.map((stock, index) => (
-                <option key={index} value={stock.psTalla}>
-                  {stock.psTalla}
-                </option>
-              ))}
-            </select>
+          <p className="product-description">
+            {product?.prdDescripcion || "Descripción no disponible"}
+          </p>
+          <div className="product-options">
+            <h2>Selecciona tus opciones:</h2>
+            {/* Selector de color */}
+            <div className="option-selector">
+              <label>Color:</label>
+              <select
+                value={selectedColor}
+                onChange={(e) => setSelectedColor(e.target.value)}
+              >
+                <option value="">Selecciona un color</option>
+                {product?.ProductoStocks?.map((stock, index) => (
+                  <option key={index} value={stock.psColor}>
+                    {stock.psColor}
+                  </option>
+                ))}
+              </select>
+            </div>
+            {/* Selector de talla */}
+            <div className="option-selector">
+              <label>Talla:</label>
+              <select
+                value={selectedSize}
+                onChange={(e) => setSelectedSize(e.target.value)}
+              >
+                <option value="">Selecciona una talla</option>
+                {product?.ProductoStocks?.map((stock, index) => (
+                  <option key={index} value={stock.psTalla}>
+                    {stock.psTalla}
+                  </option>
+                ))}
+              </select>
+            </div>
+            {/* Selector de cantidad */}
+            <div className="option-selector">
+              <label>Cantidad:</label>
+              <input
+                type="number"
+                min="1"
+                value={selectedQuantity}
+                onChange={(e) => setSelectedQuantity(parseInt(e.target.value))}
+              />
+            </div>
           </div>
-          {/* Selector de cantidad */}
-          <div className="option-selector">
-            <label>Cantidad:</label>
-            <input
-              type="number"
-              min="1"
-              value={selectedQuantity}
-              onChange={(e) => setSelectedQuantity(parseInt(e.target.value))}
-            />
-          </div>
-        </div>
-        <button className="add-to-cart-button" onClick={handleAddToCart}>
-          Agregar al carrito
-        </button>
-        <h2>Stock disponible:</h2>
-        <ul className="stock-list">
-          {product?.ProductoStocks?.map((stock, index) => (
-            <li key={index}>
-              Talla: {stock.psTalla} | Color: {stock.psColor} | Stock: {stock.psStock}
-            </li>
+          <button className="add-to-cart-button" onClick={handleAddToCart}>
+            Agregar al carrito
+          </button>
+          <h2>Stock disponible:</h2>
+          <ul className="stock-list">
+            {product?.ProductoStocks?.map((stock, index) => (
+              <li key={index}>
+                Talla: {stock.psTalla} | Color: {stock.psColor} | Stock:{" "}
+                {stock.psStock}
+              </li>
+            ))}
+          </ul>
+          <h2>Versiones de Diseño:</h2>
+          {product?.DisenoVersions?.map((version, index) => (
+            <div key={index} className="design-version">
+              <h3>
+                Versión {version.dvVersion} - {version.Diseno?.dsnNombre}
+              </h3>
+              <p>
+                <strong>Código de diseño:</strong> {version.Diseno?.dsnCodigo}
+              </p>
+              <p>
+                <strong>Precio:</strong> ${version.dvPrecio}
+              </p>
+              <h4>Diseño Frontal:</h4>
+              <p>{formatDesignOption(version.dvFrontal)}</p>
+              <h4>Diseño Espalda:</h4>
+              <p>{formatDesignOption(version.dvEspalda)}</p>
+            </div>
           ))}
-        </ul>
-        <h2>Versiones de Diseño:</h2>
-        {product?.DisenoVersions?.map((version, index) => (
-          <div key={index} className="design-version">
-            <h3>Versión {version.dvVersion} - {version.Diseno?.dsnNombre}</h3>
-            <p><strong>Código de diseño:</strong> {version.Diseno?.dsnCodigo}</p>
-            <p><strong>Precio:</strong> ${version.dvPrecio}</p>
-            <h4>Diseño Frontal:</h4>
-            <p>{formatDesignOption(version.dvFrontal)}</p>
-            <h4>Diseño Espalda:</h4>
-            <p>{formatDesignOption(version.dvEspalda)}</p>
-          </div>
-        ))}
-      </div>
+        </div>
+      )}
     </LoaderWrapper>
   );
 };
